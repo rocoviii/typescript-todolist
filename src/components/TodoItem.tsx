@@ -1,6 +1,7 @@
 import React from "react";
 import TodoItemStyled from "./TodoItem.styled";
 import { useTodosDispatch, Todo } from "../contexts/TodosContext";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 
 export type TodoItemProps = {
   todo: Todo;
