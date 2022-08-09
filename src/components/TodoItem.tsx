@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItemStyled from "./TodoItem.styled";
 import { useTodosDispatch, Todo } from "../contexts/TodosContext";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export type TodoItemProps = {
   todo: Todo;
@@ -18,9 +18,6 @@ function TodoItem({ todo }: TodoItemProps) {
   };
   return (
     <TodoItemStyled className="TodoItem">
-      <div className="ItemIndex">
-        <span>{todo.id}</span>
-      </div>
       <div className={`ItemContent ${todo.done ? "done" : ""}`}>
         <span onClick={onToggle}>{todo.text}</span>
       </div>
