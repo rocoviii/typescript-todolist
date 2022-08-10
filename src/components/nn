@@ -1,0 +1,50 @@
+
+
+return (
+  <!-- <div className="App"> -->
+    <DragDropContext>
+      <Droppable droppableId="to-dos">
+        {(provided) => (
+          <ul {...provided.droppableProps} ref={provided.innerRef}>
+            {data.map((item, index) => (
+              <Draggable
+                key={item.id}
+                draggableId={item.id.toString()}
+                index={index}
+              >
+                {(provided, snapshot) => (
+                  <li
+                    {...provided.draggableProps}
+                    ref={provided.innerRef}
+                    {...provided.dragHandleProps}
+                    key={item.id}
+                    className={
+                      snapshot.isDragging ? "selected" : "not-selected"
+                    }
+                  >
+                    {index + 1}.{item.name}
+                    <button onClick={() => deleteItem(item.id)}>Delete</button>
+                  </li>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </ul>
+        )}
+      </Droppable>
+    </DragDropContext>
+  </div>
+);
+
+return (
+    <TodoListStyled className="todoList">
+  {...provided.droppableProps} ref={provided.innerRef}>
+              {todos.length === 0 ? (
+                <span>오늘 할 일을 등록하세요!</span>
+              ) : (
+                todos.map((todo) => <TodoItem todo={todo} key={todo.id} />)
+              )}
+          )}
+
+    </TodoListStyled>
+)
