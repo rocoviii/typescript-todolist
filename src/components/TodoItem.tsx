@@ -1,7 +1,6 @@
 import React from "react";
 import TodoItemStyled from "./TodoItem.styled";
 import { useTodosDispatch, Todo } from "../contexts/TodosContext";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export type TodoItemProps = {
   todo: Todo;
@@ -16,6 +15,7 @@ function TodoItem({ todo }: TodoItemProps) {
   const onRemove = () => {
     dispatch({ type: "REMOVE", id: todo.id });
   };
+
   return (
     <TodoItemStyled className="TodoItem">
       <div className={`ItemContent ${todo.done ? "done" : ""}`}>
