@@ -1,7 +1,7 @@
 import React, { createContext, Dispatch, useReducer, useContext } from "react";
 
 export interface Todo {
-  readonly id: number;
+  id: number;
   text: string;
   done: boolean;
 }
@@ -13,7 +13,8 @@ const TodosStateContext = createContext<TodosState | undefined>(undefined);
 type Action =
   | { type: "CREATE"; text: string }
   | { type: "TOGGLE"; id: number }
-  | { type: "REMOVE"; id: number };
+  | { type: "REMOVE"; id: number }
+  | { type: "DRAG"; id: number };
 
 type TodosDispatch = Dispatch<Action>;
 const TodosDispatchContext = createContext<TodosDispatch | undefined>(
@@ -37,6 +38,8 @@ function todosReducer(state: TodosState, action: Action): TodosState {
       return state.filter((todo) => todo.id !== action.id);
     default:
       throw new Error("Unhandled action");
+    case "DRAG":
+      return state.filter((todo) => todo.id !== action.id);
   }
 }
 
